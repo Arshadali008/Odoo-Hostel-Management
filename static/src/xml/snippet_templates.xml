@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Room tab content template-->
+<templates xml:space="preserve">
+    <t t-name="hostel_management.rooms_snippet_carousel">
+        <div t-attf-id="course_carousel{{uniq}}" class="container py-3 carousel slide" data-bs-ride="carousel"
+             t-att-data-bs-interval="interval">
+            <h3 class="section_heading">Latest Rooms</h3>
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                <t t-foreach="chunks" t-as="chunk" t-key="chunk_index">
+                    <div t-att-class="chunk.is_active ? 'carousel-item active' : 'carousel-item'">
+                        <div class="row">
+                            <t t-foreach="chunk" t-as="item" t-key="item_index">
+                                <div class="website_rooms col-sm-3">
+                                    <t t-if="item">
+                                        <t t-if="item.image">
+                                            <a id="web_room_div" t-attf-href="/rooms/{{item.id}}"
+                                               class="btn btn-primary shadow-lg">
+                                                <div class="card border-0">
+                                                <img t-att-src="'data:image/png;base64,' + item.image"
+                                                     class="card-img-top"
+                                                     alt="item.name" loading="lazy" width="320"
+                                                     height="180"/>
+                                                    <div class="card-body bg-primary text-white">
+                                                            <h5 class="card-title">Room : <t
+                                                                    t-esc="item.room_no"/></h5>
+                                                        <p class="card-text">Total Rent : <t
+                                                                t-esc="item.total_rent"/>
+                                                            <br/>
+                                                            No of bed :
+                                                            <t t-esc="item.no_of_bed"/>
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </t>
+                                        <t t-else="">
+                                            <a id="web_room_div_no_image" t-attf-href="/rooms/{{item.id}}"
+                                               class="btn btn-primary shadow-lg">
+                                                <div class="card border-0">
+                                                    <img src="/hostel_management/static/src/images/no-image.svg"
+                                                         class="card-img-top object-fit-cover" height="180" width="320"
+                                                         alt="item.name" loading="lazy"/>
+                                                    <div class="card-body bg-primary text-white">
+                                                            <h5 class="card-title">Room : <t
+                                                                    t-esc="item.room_no"/></h5>
+                                                        <p class="card-text">Total Rent : <t
+                                                                t-esc="item.total_rent"/>
+                                                            <br/>
+                                                            No of bed :
+                                                            <t t-esc="item.no_of_bed"/>
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </t>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <a t-attf-href="#course_carousel{{uniq}}" class="carousel-control-prev" data-bs-slide="prev" role="button"
+               aria-label="Previous" title="Previous">
+                <span class="fa fa-chevron-circle-left fa-2x"/>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a t-attf-href="#course_carousel{{uniq}}" class="carousel-control-next" data-bs-slide="next" role="button"
+               aria-label="Next" title="Next">
+                <span class="fa fa-chevron-circle-right fa-2x"/>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </t>
+</templates>

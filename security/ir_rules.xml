@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="room_management_company_rule" model="ir.rule">
+        <field name="name">Room Management Company Rule</field>
+        <field name="model_id" ref="model_room_management"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+    </record>
+    <record id="student_information_company_rule" model="ir.rule">
+        <field name="name">Student Information Company Rule</field>
+        <field name="model_id" ref="model_student_information"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+    </record>
+    <record id="cleaning_service_company_rule" model="ir.rule">
+        <field name="name">Cleaning Service Company Rule</field>
+        <field name="model_id" ref="model_cleaning_service"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+    </record>
+    <record id="leave_request_company_rule" model="ir.rule">
+        <field name="name">Leave Request Company Rule</field>
+        <field name="model_id" ref="model_leave_request"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+    </record>
+    <record id="room_management_student_rule" model="ir.rule">
+        <field name="name">Room Management Student Rule</field>
+        <field name="model_id" ref="model_room_management"/>
+        <field name="domain_force">[('student_ids.user_id.id', '=', user.id)]</field>
+        <field name="groups" eval="[Command.link(ref('hostel_management.hostel_management_group_student'))]"/>
+    </record>
+    <record id="student_information_student_rule" model="ir.rule">
+        <field name="name">Student Information Student Rule</field>
+        <field name="model_id" ref="model_student_information"/>
+        <field name="domain_force">[('user_id.id', '=', user.id)]</field>
+        <field name="groups" eval="[Command.link(ref('hostel_management.hostel_management_group_student'))]"/>
+    </record>
+    <record id="cleaning_service_staff_rule" model="ir.rule">
+        <field name="name">Cleaning Service Staff Rule</field>
+        <field name="model_id" ref="model_cleaning_service"/>
+        <field name="domain_force">['|',('user_id', '=', user.id),('user_id','=',False)]</field>
+        <field name="groups" eval="[Command.link(ref('hostel_management.hostel_management_group_staff'))]"/>
+    </record>
+</odoo>

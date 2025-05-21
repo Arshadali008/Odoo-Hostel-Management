@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a new view to extend the res.partner form view -->
+    <record id="leave_report_view" model="ir.ui.view">
+        <field name="name">Leave Report View</field>
+        <field name="model">leave.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="room_id"/>
+                        <field name="student_id"/>
+                        <field name="start_date"/>
+                        <field name="arrival_date"/>
+                    </group>
+                    <footer>
+                        <button name="action_leave_report_request" string="Print" type="object"/>
+                        <button name="leave_report_excel" string="Download Leave Report Excel" type="object"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

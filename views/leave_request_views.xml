@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="leave_request_view_form" model="ir.ui.view">
+        <field name="name">Leave Request View Form</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="new,approved"/>
+                    <button name="action_approve" class="oe_highlight" string="Approve" type="object"
+                            invisible="status == 'approved' or status == False"
+                            groups="hostel_management.hostel_management_group_warden,base.group_system"/>
+                    <button name="action_new" class="oe_highlight" string="New" type="object"
+                            invisible="status == 'new'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="company_id"/>
+                            <field name="leave_duration"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="arrival_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="leave_request_list_view_list" model="ir.ui.view">
+        <field name="name">Leave Request View List</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="start_date"/>
+                <field name="arrival_date"/>
+            </list>
+        </field>
+    </record>
+</odoo>

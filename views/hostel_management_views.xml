@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="room_management_action" model="ir.actions.act_window">
+        <field name="name">Room Management</field>
+        <field name="res_model">room.management</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="student_information_action" model="ir.actions.act_window">
+        <field name="name">Student Management</field>
+        <field name="res_model">student.information</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="hostel_facility_action" model="ir.actions.act_window">
+        <field name="name">Hostel Facility</field>
+        <field name="res_model">hostel.facility</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="leave_request_action" model="ir.actions.act_window">
+        <field name="name">Leave Request</field>
+        <field name="res_model">leave.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="cleaning_service_action" model="ir.actions.act_window">
+        <field name="name">Cleaning Service</field>
+        <field name="res_model">cleaning.service</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="student_report_action" model="ir.actions.act_window">
+        <field name="name">Student Report</field>
+        <field name="res_model">student.report.wizard</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+    <record id="leave_report_action" model="ir.actions.act_window">
+        <field name="name">Leave Report</field>
+        <field name="res_model">leave.report.wizard</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+    <record id="website_student_registration_menu" model="website.menu">
+        <field name="name">Student Registration</field>
+        <field name="url">/webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+    <record id="website_room_menu" model="website.menu">
+        <field name="name">Hostel Rooms</field>
+        <field name="url">/rooms</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+</odoo>

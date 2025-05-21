@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a new view to extend the res.partner form view -->
+    <record id="student_report_view" model="ir.ui.view">
+        <field name="name">Student Report View</field>
+        <field name="model">student.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="room_id"/>
+                        <field name="student_id"/>
+                    </group>
+                    <footer>
+                        <button name="action_student_report_request" string="Print" type="object"/>
+                        <button name="student_report_excel" string="Download Student Report Excel" type="object"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

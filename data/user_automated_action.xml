@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Automated action for creating a user while student creation-->
+    <record id="action_create_user_on_create_student" model="ir.actions.server">
+        <field name="name">Create User on Create Student</field>
+        <field name="model_id" ref="hostel_management.model_student_information"/>
+        <field name="state">code</field>
+        <field name="code">record.automated_user()</field>
+    </record>
+    <record id="automated_action_create_user_on_student_creation_done" model="base.automation">
+        <field name="name">Create User on Student Creation Done</field>
+        <field name="model_id" ref="hostel_management.model_student_information"/>
+        <field name="trigger">on_create</field>
+        <field name="action_server_ids"
+               eval="[Command.set(ref('hostel_management.action_create_user_on_create_student'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem name="Hostel Management"
+              id="hostel_management"
+              action="room_management_action"
+    />
+    <menuitem name="Room Management"
+              id="room_management"
+              action="room_management_action"
+              parent="hostel_management"
+    />
+    <menuitem name="Room Management"
+              id="room_managing"
+              action="room_management_action"
+              sequence="1"
+              parent="room_management"
+    />
+    <menuitem name="Cleaning Service"
+              id="cleaning_service"
+              action="cleaning_service_action"
+              parent="room_management"
+    />
+    <menuitem name="Hostel Facility"
+              id="hostel_facility"
+              action="hostel_facility_action"
+              parent="room_management"
+    />
+    <menuitem name="Student Management"
+              id="student_information"
+              action="student_information_action"
+              parent="hostel_management"
+    />
+    <menuitem name="Student Management"
+              id="student_management"
+              action="student_information_action"
+              sequence="1"
+              parent="student_information"
+    />
+    <menuitem name="Leave Request"
+              id="leave_request"
+              action="leave_request_action"
+              parent="student_information"
+    />
+    <menuitem name="Hostel Reports"
+              id="hostel_report"
+              action="student_report_action"
+              parent="hostel_management"
+    />
+    <menuitem name="Student Report"
+              id="student_report"
+              action="student_report_action"
+              parent="hostel_report"
+    />
+    <menuitem name="Leave Report"
+              id="leave_report_report"
+              action="leave_report_action"
+              parent="hostel_report"
+    />
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="room_management_view_form" model="ir.ui.view">
+        <field name="name">Room Management View Form</field>
+        <field name="model">room.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="empty,partial,full,cleaning"/>
+                    <button name="action_monthly_invoice" string="Monthly Invoice" type="object"
+                            class="btn-primary" groups="base.group_system" invisible='not student_ids'/>
+                </header>
+                <sheet>
+                    <group name="room_details">
+                        <group>
+                            <h1>
+                                <field name="room_no"/>
+                            </h1>
+                            <field name="room_type"/>
+                            <field name="company_id"/>
+                            <field name="facility_ids" widget="many2many_tags"/>
+                            <field name="total_rent"/>
+                            <field name="pending_amount"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" nolabel="1"/>
+                            <field name="rent" widget='monetary'/>
+                            <field name="currency_id"/>
+                            <field name="no_of_bed"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="students_allotted" string="Students Allotted">
+                            <field name="student_ids" widget="one2many" mode="list" readonly="1">
+                                <list string="Student_details" editable="top" create="false" delete="false">
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="room_management_view_list" model="ir.ui.view">
+        <field name="name">Room Management View List</field>
+        <field name="model">room.management</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="room_no"/>
+                <field name="room_type"/>
+                <field name="total_rent"/>
+            </list>
+        </field>
+    </record>
+</odoo>

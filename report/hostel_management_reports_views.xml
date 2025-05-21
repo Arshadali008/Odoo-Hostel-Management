@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_student_report" model="ir.actions.report">
+        <field name="name">students report</field>
+        <field name="model">student.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hostel_management.form_student_report</field>
+        <field name="report_file">hostel_management.form_student_report</field>
+    </record>
+    <record id="action_leave_report" model="ir.actions.report">
+        <field name="name">Leave report</field>
+        <field name="model">leave.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hostel_management.form_leave_report</field>
+        <field name="report_file">hostel_management.form_leave_report</field>
+    </record>
+</odoo>

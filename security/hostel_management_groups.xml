@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hostel_management.module_category_hostel_management" model="ir.module.category">
+        <field name="name">Hostel Management</field>
+        <field name="sequence">7</field>
+    </record>
+    <record id="hostel_management_group_staff" model="res.groups">
+        <field name="name">Hostel Staff</field>
+        <field name="category_id" ref="hostel_management.module_category_hostel_management"/>
+    </record>
+    <record id="hostel_management_group_warden" model="res.groups">
+        <field name="name">Hostel Warden</field>
+        <field name="category_id" ref="hostel_management.module_category_hostel_management"/>
+   </record>
+    <record id="hostel_management_group_student" model="res.groups">
+        <field name="name">Hostel Student</field>
+        <field name="category_id" ref="hostel_management.module_category_hostel_management"/>
+    </record>
+</odoo>

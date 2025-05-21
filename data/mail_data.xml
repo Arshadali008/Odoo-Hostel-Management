@@ -1,0 +1,45 @@
+<odoo>
+    <record id="monthly_email_template" model="mail.template">
+        <field name="name">Monthly Email Template</field>
+        <field name="model_id" ref="hostel_management.model_room_management"/>
+        <field name="email_from">{{object.company_id.email}}</field>
+        <field name="subject">{{object.company_id.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>
+                    Hello,
+                    <br/>
+                    <br/>
+                    Your invoice For Room rent is initiated, Please pay the bill as fast
+                    <br/>
+                    <br/>
+                    <br/>Mitchell Admin
+                    <br/>
+                    <br/>
+                </p>
+            </div>
+        </field>
+    </record>
+    <record id="posted_email_template" model="mail.template">
+        <field name="name">Posted Email Template</field>
+        <field name="model_id" ref="hostel_management.model_account_move"/>
+        <field name="email_from">{{object.company_id.email}}</field>
+        <field name="email_to">{{object.partner_id.email}}</field>
+        <field name="subject">{{object.company_id.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>
+                    Hello,
+                    <br/>
+                    <br/>
+                    Your invoice For Room rent is Posted, Please pay the bill as fast
+                    <br/>
+                    <br/>
+                    <br/>Mitchell Admin
+                    <br/>
+                    <br/>
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="cleaning_service_view_form" model="ir.ui.view">
+        <field name="name">Cleaning Service Form</field>
+        <field name="model">cleaning.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="cleaning_state" widget="statusbar" statusbar_visible="new,assigned,done"/>
+                    <button name="action_assign" string="Assign" class="btn-primary" type="object"
+                            invisible="cleaning_state == 'assigned'"/>
+                    <button name="action_complete" string="Complete" class="btn-primary" type="object"
+                            invisible="cleaning_state == 'done' or cleaning_state == 'new'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="room_id"/>
+                            <field name="start_time"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="cleaning_service_view_list" model="ir.ui.view">
+        <field name="name">Cleaning Service View List</field>
+        <field name="model">cleaning.service</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="room_id"/>
+                <field name="user_id"/>
+                <field name="cleaning_state"/>
+            </list>
+        </field>
+    </record>
+</odoo>

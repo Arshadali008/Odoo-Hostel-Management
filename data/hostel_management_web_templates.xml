@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="web_form_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure p-3 oe_empty">
+                <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="width:900px">
+                    <section data-vcss="001" data-snippet="s_website_form">
+                        <form id="student_registration_form" action="/webform/submit" method="post"
+                              enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <h2 class="p-3" style="color:#180050; text:bold; font-family:Sans-serif">
+                                <center>Student Registration Form</center>
+                            </h2>
+                            <div class="s_website_form_rows row s_col_no_bgcolor row-gap-3">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">Student Name</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="student_name" type="text" name="student_name" required="1"
+                                                   class="form-control s_website_form_input"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">DOB</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="date_of_birth" type="date" name="date_of_birth" required="1"
+                                                   class="form-control s_website_form_input" min="1800-01-01"
+                                                   max="2200-12-31"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">Email</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="email" type="email"
+                                                   class="email_div form-control s_website_form_input"
+                                                   name="email" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">Receive Mail</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="receive_mail" type="checkbox" name="receive_mail"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">Room</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select id="room" class="form-control s_website_form_input" name="room">
+                                                <option value=""/>
+                                                <t t-foreach="rooms" t-as="room">
+                                                    <option>
+                                                        <t t-esc="room.room_no"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 website_form_submit" data-name="Submit Button">
+                                    <div style="width: 200px;" class="s_website_form_label"/>
+                                    <button type="submit" class="btn btn-primary website_form_send show_class">Submit
+                                    </button>
+                                </div>
+                                <div class="pt-1">
+                                    <t t-if="existing_email">
+                                        <div class="alert alert-danger">Sorry! This email already used</div>
+                                    </t>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="web_success_template" name="Web Success Template">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="p-3 col-md-12">
+                        <div class="alert alert-success">
+                            Student created successfully.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="rooms_website" name="Rooms Website">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty"/>
+        </t>
+    </template>
+    <template id="room_details_page" name="Product Detail">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="oe_structure"/>
+                <div class="card shadow p-3 mb-5 bg-white rounded my-3">
+                    <div class="card-header pb-1" style="width:100%">
+                        <div style="float:left">
+                            <h5 t-field="room.room_no"/>
+                        </div>
+                        <div style="float:right">
+                            <h5 class="text-warning" t-if="room.state == 'partial'">Partial</h5>
+                            <h5 class="text-danger" t-elif="room.state == 'full'">Full</h5>
+                            <h5 class="text-success" t-else="">Empty</h5>
+                        </div>
+                    </div>
+                    <div class="card-body px-2">
+                        <div class="row">
+                            <div class="col">
+                                <img t-attf-src="data:image/png;base64,{{room.image}}" class="card-img-top"
+                                     t-att-alt="room.room_no" loading="lazy"/>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">Rent : ₹
+                                    <span t-field="room.total_rent" t-options="{'widget': 'price'}"/>
+                                </h5>
+                                <p>Owned Company :
+                                    <t t-esc="room.company_id.name"/>
+                                    <br/>
+                                    Room Type :
+                                    <span t-field="room.room_type"
+                                          t-options="{ 'widget': 'selection', 'get_description': True}"/>
+                                    <br/>
+                                    No Of Bed :
+                                    <t t-esc="room.no_of_bed"/>
+                                    <br/>
+                                    Available Beds :
+                                    <t t-esc="room.no_of_bed - len(room.student_ids)"/>
+                                </p>
+                                <h5 class="ps-2 rounded" style="background-color:#d9d9d9">Facilities</h5>
+                                <p class="px-3">
+                                    <t t-foreach="room.facility_ids" t-as="facility">
+                                        <t t-esc="facility.facility_name"/>
+                                        <br/>
+                                    </t>
+                                </p>
+                            </div>
+                        </div>
+                        <center>
+                            <a href="/rooms" class="btn btn-primary mt-3 w-75">Back</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

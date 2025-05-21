@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="room_management_view_search" model="ir.ui.view">
+        <field name="name">Room Management View Search</field>
+        <field name="model">room.management</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="room_no"/>
+                <field name="room_type"/>
+                <filter string="Available rooms" name="available_room" domain="[('state', '!=','full')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="No of bed" name="group_by_no_of_bed" context="{'group_by': 'no_of_bed'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="student_information_view_search" model="ir.ui.view">
+        <field name="name">Student Information View Search</field>
+        <field name="model">student.information</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="student_no"/>
+                <filter string="Archived" name="students_archived" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Room" name="group_by_room_id" context="{'group_by': 'room_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="leave_request_view_search" model="ir.ui.view">
+        <field name="name">Leave Request View Search</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="student_id"/>
+                <filter string="New" name="students_leave_requested" domain="[('status', '=', 'new')]"/>
+                <filter string="Approved" name="students_leave_approved" domain="[('status', '=', 'approved')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="hostel_facility_view_search" model="ir.ui.view">
+        <field name="name">Hostel Facility View Search</field>
+        <field name="model">hostel.facility</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="facility_name"/>
+                <group expand="0" string="Group By">
+                    <filter string="Charge" name="group_by_charge" context="{'group_by': 'charge'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="cleaning_service_view_search" model="ir.ui.view">
+        <field name="name">Cleaning Service View Search</field>
+        <field name="model">cleaning.service</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="room_id"/>
+                <field name="user_id"/>
+                <filter string="New" name="clean_request_new" domain="[('cleaning_state', '=', 'new')]"/>
+                <filter string="Assigned" name="clean_request_assigned" domain="[('cleaning_state', '=', 'assigned')]"/>
+                <filter string="Done" name="clean_request_done" domain="[('cleaning_state', '=', 'done')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="group_by_state" context="{'group_by': 'cleaning_state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

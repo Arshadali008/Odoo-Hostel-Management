@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="product_product_rent" model="product.product">
+        <field name="name">Room Rent</field>
+        <field name="type">service</field>
+        <field name="purchase_line_warn">warning</field>
+        <field name="sale_line_warn">no-message</field>
+    </record>
+    <record id="product_product_spoon" model="product.product">
+        <field name="name">Spoon</field>
+        <field name="standard_price">2</field>
+        <field name="list_price">5</field>
+        <field name="purchase_line_warn">warning</field>
+        <field name="sale_line_warn">no-message</field>
+    </record>
+    <record id="product_product_mouse" model="product.product">
+        <field name="name">Mouse</field>
+        <field name="standard_price">12</field>
+        <field name="list_price">20</field>
+        <field name="purchase_line_warn">warning</field>
+        <field name="sale_line_warn">no-message</field>
+    </record>
+    <record id="product_product_keyboard" model="product.product">
+        <field name="name">Keyboard</field>
+        <field name="standard_price">15</field>
+        <field name="list_price">35</field>
+        <field name="purchase_line_warn">warning</field>
+        <field name="sale_line_warn">no-message</field>
+    </record>
+    <record id="product_product_bottle" model="product.product">
+        <field name="name">Bottle</field>
+        <field name="standard_price">8</field>
+        <field name="list_price">20</field>
+        <field name="purchase_line_warn">warning</field>
+        <field name="sale_line_warn">no-message</field>
+    </record>
+</odoo>
